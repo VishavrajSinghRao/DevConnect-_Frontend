@@ -13,7 +13,7 @@ const TeamManagement = () => {
     const navigate = useNavigate();
 
     const token = localStorage.getItem("token");
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 
     useEffect(() => {
         fetchTeams();

@@ -7,7 +7,7 @@ const Github = () => {
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 
     useEffect(() => {
         const fetchGitHubData = async () => {

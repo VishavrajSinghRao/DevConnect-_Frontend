@@ -12,7 +12,7 @@ const Profile = () => {
     const [searchUsername, setSearchUsername] = useState("");
     const [searchedUser, setSearchedUser] = useState(null);
     const [searchedRepos, setSearchedRepos] = useState([]);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 
     useEffect(() => {
         const fetchProfile = async () => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 
 const socket = io(`${apiUrl}`);
 

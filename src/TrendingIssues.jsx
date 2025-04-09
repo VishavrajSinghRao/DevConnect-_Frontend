@@ -24,7 +24,7 @@ const TrendingIssues = () => {
         setIssues([]);
 
         const userToken = localStorage.getItem("token");
-        const apiUrl = process.env.REACT_APP_API_URL;
+        const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 
         if (!userToken) {
             console.error("❌ GitHub token is missing!");

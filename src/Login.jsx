@@ -2,11 +2,12 @@ import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 
+
 const Login = () => {
     const [githubToken, setGithubToken] = useState("");
     const [forceLogin, setForceLogin] = useState(false);
-    const [showSteps, setShowSteps] = useState(false); // ✅ State for login steps modal
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const [showSteps, setShowSteps] = useState(false); // 
+    const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 
     const handleOAuthLogin = () => {
         const loginURL = `${apiUrl}/auth/github?force_login=${forceLogin}`;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 const UserProfile = ({username}) => {
         const [userData , setuserData] = useState(null);
         const [repos , setRepos] = useState([]);

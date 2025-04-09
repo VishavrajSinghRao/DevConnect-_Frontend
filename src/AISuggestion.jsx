@@ -12,7 +12,7 @@ const AISuggestions = () => {
     const [loading, setLoading] = useState(false);
     const [viewOpenSource, setViewOpenSource] = useState(false);
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 
     const fetchAISuggestions = async () => {
         if (!githubUsername) {

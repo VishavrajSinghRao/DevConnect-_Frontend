@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const FollowUser = ({userId, targetUserId,isFollowing}) => {
    const [following , setFollowing] = useState(isFollowing);
-   const apiUrl = process.env.REACT_APP_API_URL;
+   const apiUrl = "https://devconnect-backend-2iqt.onrender.com";
 
    const toggleFollow = async () => {
         try{
