@@ -22,7 +22,6 @@ const Login = () => {
 
         try {
             const { data } = await axios.post(`${apiUrl}/auth/github/pat`, { githubToken });
-
             localStorage.setItem("token", data.token);
             window.location.href = "/dashboard";
         } catch (error) {
