@@ -1,17 +1,17 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 
-
+const apiUrl = process.env.REACT_APP_API_URL;
 const UserProfile = ({username}) => {
         const [userData , setuserData] = useState(null);
         const [repos , setRepos] = useState([]);
 
         const fetchUserProfile =async () =>{
             try{
-                const {data} = await axios.get(`http://localhost:5000/api/github/user/${username}`);
+                const {data} = await axios.get(`${apiUrl}/api/github/user/${username}`);
                 setuserData(data);
 
-                const repoRes = await axios.get(`http://localhost:5000/api/github/user/${username}/repos`);
+                const repoRes = await axios.get(`${apiUrl}/api/github/user/${username}/repos`);
                 setRepos(repoRes.data);
 
             } catch(e){

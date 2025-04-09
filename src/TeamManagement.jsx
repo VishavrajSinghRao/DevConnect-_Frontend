@@ -13,6 +13,7 @@ const TeamManagement = () => {
     const navigate = useNavigate();
 
     const token = localStorage.getItem("token");
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         fetchTeams();
@@ -21,7 +22,7 @@ const TeamManagement = () => {
 
     const fetchTeams = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/teams");
+            const res = await axios.get(`${apiUrl}/api/teams`);
             setTeams(res.data);
         } catch (err) {
             console.error("🔥 Error fetching teams:", err);
@@ -30,7 +31,7 @@ const TeamManagement = () => {
 
     const fetchUser = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/users/me`, {
+            const res = await axios.get(`${apiUrl}/api/users/me`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUser(res.data);
@@ -42,7 +43,7 @@ const TeamManagement = () => {
     const createTeam = async () => {
         try {
             const res = await axios.post(
-                "http://localhost:5000/api/teams/create",
+                `${apiUrl}/api/teams/create`,
                 { teamName, repoUrl },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -62,7 +63,7 @@ const TeamManagement = () => {
     const joinTeam = async (teamId) => {
         try {
             const res = await axios.post(
-                "http://localhost:5000/api/teams/join",
+               `${apiUrl}/api/teams/join`,
                 { teamId },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -77,7 +78,7 @@ const TeamManagement = () => {
     const leaveTeam = async (teamId) => {
         try {
             const res = await axios.post(
-                "http://localhost:5000/api/teams/leave",
+                `${apiUrl}/api/teams/leave`,
                 { teamId },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -91,7 +92,7 @@ const TeamManagement = () => {
 
     const deleteTeam = async (teamId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/teams/delete/${teamId}`, {
+            await axios.delete(`${apiUrl}/api/teams/delete/${teamId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setMessage("✅ Team deleted successfully.");

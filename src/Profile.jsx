@@ -12,6 +12,7 @@ const Profile = () => {
     const [searchUsername, setSearchUsername] = useState("");
     const [searchedUser, setSearchedUser] = useState(null);
     const [searchedRepos, setSearchedRepos] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -23,7 +24,7 @@ const Profile = () => {
                     return;
                 }
 
-                const userResponse = await fetch("http://localhost:5000/api/user/profile", {
+                const userResponse = await fetch(`${apiUrl}/api/user/profile`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -36,7 +37,7 @@ const Profile = () => {
                     return;
                 }
 
-                const repoResponse = await fetch("http://localhost:5000/api/github/repos", {
+                const repoResponse = await fetch(`${apiUrl}/api/github/repos`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

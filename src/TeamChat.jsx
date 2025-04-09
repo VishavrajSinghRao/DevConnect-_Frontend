@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const apiUrl = process.env.REACT_APP_API_URL;
+
+const socket = io(`${apiUrl}`);
 
 const TeamChat = ({ teamId, currentUser }) => {
   const [messages, setMessages] = useState([]);

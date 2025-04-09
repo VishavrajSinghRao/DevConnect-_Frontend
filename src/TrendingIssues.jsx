@@ -24,6 +24,7 @@ const TrendingIssues = () => {
         setIssues([]);
 
         const userToken = localStorage.getItem("token");
+        const apiUrl = process.env.REACT_APP_API_URL;
 
         if (!userToken) {
             console.error("❌ GitHub token is missing!");
@@ -35,7 +36,7 @@ const TrendingIssues = () => {
         console.log("🔑 Sending GitHub Token:", userToken);
 
         try {
-            const response = await axios.get(`http://localhost:5000/api/trending-issues?tech=${tech}`, {
+            const response = await axios.get(`${apiUrl}/api/trending-issues?tech=${tech}`, {
                 headers: { Authorization: `Bearer ${userToken}` },
             });
 
@@ -70,7 +71,7 @@ const TrendingIssues = () => {
             console.log("🔹 Fetching receiver ID for:", collaboratorUsername);
     
             // Fetch receiver ID from backend
-            const userResponse = await axios.get(`http://localhost:5000/api/collaboration/user/username/${collaboratorUsername}`);
+            const userResponse = await axios.get(`${apiUrl}/api/collaboration/user/username/${collaboratorUsername}`);
     
             console.log("✅ Receiver User Data:", userResponse.data);
     
@@ -85,7 +86,7 @@ const TrendingIssues = () => {
     
             // Send collaboration request
             const response = await axios.post(
-                "http://localhost:5000/api/collaboration/collaborate",
+                `${apiUrl}/api/collaboration/collaborate`,
                 {
                     issueUrl: selectedIssue.html_url,
                     senderId, // ✅ Use extracted sender ID

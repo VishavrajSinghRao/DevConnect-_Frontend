@@ -6,9 +6,10 @@ const Login = () => {
     const [githubToken, setGithubToken] = useState("");
     const [forceLogin, setForceLogin] = useState(false);
     const [showSteps, setShowSteps] = useState(false); // ✅ State for login steps modal
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleOAuthLogin = () => {
-        const loginURL = `http://localhost:5000/auth/github?force_login=${forceLogin}`;
+        const loginURL = `${apiUrl}/auth/github?force_login=${forceLogin}`;
         window.location.href = loginURL;
     };
 
@@ -19,7 +20,7 @@ const Login = () => {
         }
 
         try {
-            const { data } = await axios.post("http://localhost:5000/auth/github/pat", { githubToken });
+            const { data } = await axios.post(`${apiUrl}/auth/github/pat`, { githubToken });
 
             localStorage.setItem("token", data.token);
             window.location.href = "/dashboard";

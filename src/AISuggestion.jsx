@@ -12,6 +12,8 @@ const AISuggestions = () => {
     const [loading, setLoading] = useState(false);
     const [viewOpenSource, setViewOpenSource] = useState(false);
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const fetchAISuggestions = async () => {
         if (!githubUsername) {
             alert("Enter your GitHub username!");
@@ -20,7 +22,7 @@ const AISuggestions = () => {
 
         setLoading(true);
         try {
-            const { data } = await axios.post("http://localhost:5000/api/ai-suggestions", { githubUsername });
+            const { data } = await axios.post(`${apiUrl}/api/ai-suggestions`, { githubUsername });
             setCareerSuggestion(data.careerSuggestion);
             setOpenSourceProjects(data.openSourceProjects);
         } catch (error) {

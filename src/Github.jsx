@@ -7,6 +7,7 @@ const Github = () => {
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchGitHubData = async () => {
@@ -19,7 +20,7 @@ const Github = () => {
             }
 
             try {
-                const response = await fetch("http://localhost:5000/api/github/repos", {
+                const response = await fetch(`${apiUrl}/api/github/repos`, {
                     headers: { Authorization: `Bearer ${token}` }, 
                 });
 

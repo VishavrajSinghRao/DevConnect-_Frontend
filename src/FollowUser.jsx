@@ -3,10 +3,11 @@ import axios from 'axios'
 
 const FollowUser = ({userId, targetUserId,isFollowing}) => {
    const [following , setFollowing] = useState(isFollowing);
+   const apiUrl = process.env.REACT_APP_API_URL;
 
    const toggleFollow = async () => {
         try{
-            await axios.post("http://localhost:5000/api/follow", { userId, targetUserId });
+            await axios.post(`${apiUrl}/api/follow`, { userId, targetUserId });
             setFollowing(!following);
         } catch(e){
             alert("Error following user");
